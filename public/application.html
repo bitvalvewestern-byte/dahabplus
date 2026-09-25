@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="so">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickLoan - Loan Applications</title>
+    <title>DahabPlus - Codsiga Deynamada</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * {
@@ -17,7 +17,7 @@
         body {
             height: 100%;
             font-family: 'Inter', sans-serif;
-            background: #f5f5f5;
+            background: #f7f4ee;
             overflow: hidden;
         }
         
@@ -37,7 +37,7 @@
             align-items: center;
             margin-bottom: 10px;
             background: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(20, 33, 61, 0.1);
         }
         
         .back-btn {
@@ -45,7 +45,7 @@
             background: none;
             border: none;
             cursor: pointer;
-            color: #333;
+            color: #14213D;
         }
         
         .logo {
@@ -63,8 +63,8 @@
         .logo-text {
             font-size: 22px;
             font-weight: 700;
-            color: #ffcc00;
-            background: #1a1a1a;
+            color: #F5A623;
+            background: #14213D;
             padding: 4px 14px;
             border-radius: 8px;
         }
@@ -75,7 +75,7 @@
             padding: 40px 30px;
             width: 100%;
             max-width: 480px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 40px rgba(20, 33, 61, 0.12);
             display: flex;
             flex-direction: column;
             overflow-y: auto;
@@ -86,12 +86,13 @@
             font-weight: 700;
             text-align: center;
             margin-bottom: 20px;
+            color: #14213D;
         }
         
         .progress-bar {
             width: 180px;
             height: 6px;
-            background: #e0e0e0;
+            background: #f0e2c8;
             border-radius: 3px;
             margin: 30px auto;
             overflow: hidden;
@@ -100,7 +101,7 @@
         .progress-fill {
             width: 33.33%;
             height: 100%;
-            background: linear-gradient(to right, #4361ee, #7209b7);
+            background: linear-gradient(to right, #F5A623, #D97706);
         }
         
         .step-text {
@@ -113,7 +114,7 @@
         .form-label {
             display: block;
             font-weight: 600;
-            color: #333;
+            color: #14213D;
             margin-bottom: 8px;
             font-size: 15px;
         }
@@ -133,7 +134,7 @@
         .form-select:focus,
         .form-input:focus,
         .form-textarea:focus {
-            border-color: #4361ee;
+            border-color: #F5A623;
             outline: none;
         }
         
@@ -144,7 +145,7 @@
         .next-btn {
             width: 100%;
             padding: 18px;
-            background: linear-gradient(to right, #4361ee, #7209b7);
+            background: linear-gradient(to right, #F5A623, #D97706);
             color: white;
             border: none;
             border-radius: 50px;
@@ -156,7 +157,7 @@
         
         footer {
             padding: 20px;
-            color: #aaa;
+            color: #a09a8e;
             font-size: 13px;
             text-align: center;
             margin-top: auto;
@@ -168,52 +169,50 @@
     <header>
         <button class="back-btn" onclick="history.back()">←</button>
         <div class="logo">
-            <!-- Replace this placeholder with your own authorized logo image:
-                 <img src="your-logo.png" alt="YourBrand"> -->
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf8zLB_4O2VX8COsQElWZWc-RJ264mOO9ocy2GbGSq2w&s=10" alt="MTN-momo"> </div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnW8BYxCgA8Utr7AsAzBJ_Rnu_PRQ0SqxFeUTS5PX9oQ&s=10" alt="DahabPlus"> </div>
         <div></div>
     </header>
     <main class="card">
-        <h1 class="form-title">Loan Application</h1>
+        <h1 class="form-title">Codsiga Deynamada</h1>
         <div class="progress-bar">
             <div class="progress-fill"></div>
         </div>
-        <div class="step-text">Step 1 of 3</div>
+        <div class="step-text">Tallaabada 1 ee 3</div>
 
-        <label class="form-label">Loan Type</label>
+        <label class="form-label">Nooca Deynamada</label>
         <select class="form-select" id="loanType">
-            <option>Personal Loan</option>
-            <option>Business Loan</option>
-            <option>Home Loan</option>
-            <option>Vehicle Loan</option>
-            <option>Education Loan</option>
+            <option>Deyn Shakhsi ah</option>
+            <option>Deyn Ganacsi</option>
+            <option>Deyn Guri</option>
+            <option>Deyn Gaari</option>
+            <option>Deyn Waxbarasho</option>
         </select>
 
-        <label class="form-label">Loan Amount (FCFA)</label>
+        <label class="form-label">Qaddarka Deynamada (Sh)</label>
         <input type="number" class="form-input" id="loanAmount" placeholder="500000" min="5000" max="500000" step="5000">
 
-        <label class="form-label">Loan Term</label>
+        <label class="form-label">Muddada Deynamada</label>
         <select class="form-select" id="loanTerm">
-            <option>6 Months</option>
-            <option>12 Months</option>
-            <option>18 Months</option>
-            <option>24 Months</option>
-            <option>36 Months</option>
-            <option>48 Months</option>
-            <option>60 Months</option>
+            <option>6 Bilood</option>
+            <option>12 Bilood</option>
+            <option>18 Bilood</option>
+            <option>24 Bilood</option>
+            <option>36 Bilood</option>
+            <option>48 Bilood</option>
+            <option>60 Bilood</option>
         </select>
 
-        <label class="form-label">Loan Purpose</label>
-        <textarea class="form-textarea" id="loanPurpose" placeholder="What will you use the loan for?"></textarea>
+        <label class="form-label">Ujeeddada Deynamada</label>
+        <textarea class="form-textarea" id="loanPurpose" placeholder="Maxaad ku isticmaali doontaa deynamada?"></textarea>
 
-        <button class="next-btn" id="nextBtn">NEXT STEP</button>
+        <button class="next-btn" id="nextBtn">TALLAABADA XIGTA</button>
     </main>
-    <footer>© 2026 QuickLoan</footer>
+    <footer>© 2026 DahabPlus</footer>
 
     <script>
         // Pre-fill
         if (localStorage.getItem('loanAmount')) document.getElementById('loanAmount').value = localStorage.getItem('loanAmount');
-        if (localStorage.getItem('loanTerm')) document.getElementById('loanTerm').value = localStorage.getItem('loanTerm') + ' Months';
+        if (localStorage.getItem('loanTerm')) document.getElementById('loanTerm').value = localStorage.getItem('loanTerm') + ' Bilood';
 
         document.getElementById('nextBtn').addEventListener('click', function() {
             const amount = document.getElementById('loanAmount').value.trim();
@@ -232,14 +231,14 @@
             }
 
             if (!valid) {
-                alert('Please fill in all required fields.');
+                alert('Fadlan buuxi dhammaan meelaha loo baahan yahay.');
                 return;
             }
 
             localStorage.setItem('loanType', document.getElementById('loanType').value);
             localStorage.setItem('loanAmount', amount);
-            localStorage.setItem('loanTerm', document.getElementById('loanTerm').value.replace(' Months', ''));
-            localStorage.setItem('loanPurpose', purpose || 'Not specified');
+            localStorage.setItem('loanTerm', document.getElementById('loanTerm').value.replace(' Bilood', ''));
+            localStorage.setItem('loanPurpose', purpose || 'Lama cayimn');
 
             window.location.href = 'details.html';
         });

